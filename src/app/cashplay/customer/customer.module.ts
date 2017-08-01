@@ -6,6 +6,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
   imports: [
     CustomerRoutingModule,
   ],
-  exports: [CustomerRoutingModule]
+  exports: [CustomerRoutingModule],
 })
-export class CustomerModule {}
+export class CustomerModule {
+}

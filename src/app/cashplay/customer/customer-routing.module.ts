@@ -1,5 +1,6 @@
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -34,8 +35,10 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
+    FormsModule,
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class CustomerRoutingModule {
 }

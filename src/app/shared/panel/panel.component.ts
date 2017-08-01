@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'art-panel',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel.component.scss'],
 })
 export class PanelComponent implements OnInit {
-
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {

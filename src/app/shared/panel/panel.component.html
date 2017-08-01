@@ -1,3 +1,11 @@
-<p>
-  panel works!
-</p>
+<div class="'art-card card">
+  <div class="card-block">
+    <h5 class="card-title">{{title}}</h5>
+    <div class="card-text">
+      <ng-content></ng-content>
+      <div class="card-controls d-flex flex-row-reverse">
+        <ng-content select="[art-card-controls]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

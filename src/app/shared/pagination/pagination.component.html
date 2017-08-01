@@ -1,11 +1,6 @@
-<div :class="'art-panel panel panel-primary">
-  <div class="panel-heading">
-    <ng-content select="art-panel-header"></ng-content>
-  </div>
-  <div class="panel-body">
-    <p>kir</p>
-  </div>
-  <div class="panel-footer">
-    kos
-  </div>
-</div>
+<art-panel [title]="title">
+
+  <art-table [table]="pagination.table"></art-table>
+  <button class="btn btn-sm" art-card-controls>Next</button>
+  <button class="btn btn-sm" art-card-controls>Previous</button>
+</art-panel>
