@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../shared/pagination/Pagination';
 import { Table } from '../../../shared/table/Table';
-import { Customer } from '../customer/Customer';
+import { Customer, CustomerTableHeaders } from '../Customer';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'art-customer-home',
@@ -9,16 +10,16 @@ import { Customer } from '../customer/Customer';
   styleUrls: ['./customer-home.component.scss']
 })
 export class CustomerHomeComponent implements OnInit {
-  title: 'kir';
+  recentCustomers: Customer[];
 
-  constructor() { }
+  constructor(private customerService: CustomerService) {
+  }
 
   ngOnInit() {
+    this.recentCustomers = this.customerService.all();
   }
 
   pagination() {
-    const customers = [new Customer('jalal', 'hos'), new Customer('ali', 'mogh')];
-    const headers = [{name: 'firstName', text: 'First Name'}, {name: 'lastName', text: 'Last Name'}];
-    return new Pagination(new Table<Customer>(headers, customers));
+    return new Pagination(new Table<Customer>(CustomerTableHeaders, this.recentCustomers));
   }
 }

@@ -8,3 +8,8 @@ export class Customer {
     this.lastName = lastName;
   }
 }
+
+export const CustomerTableHeaders = [
+  {name: 'firstName', text: 'First Name'},
+  {name: 'lastName', text: 'Last Name'}
+];
