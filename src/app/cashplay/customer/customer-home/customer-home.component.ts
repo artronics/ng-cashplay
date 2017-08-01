@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../shared/pagination/Pagination';
 import { Table } from '../../../shared/table/Table';
-import { Customer, CustomerTableHeaders } from '../Customer';
+import { Customer, RECENT_CUSTOMERS_TABLE_HEADERS } from '../Customer';
 import { CustomerService } from '../customer.service';
 
 @Component({
@@ -20,6 +20,6 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   pagination() {
-    return new Pagination(new Table<Customer>(CustomerTableHeaders, this.recentCustomers));
+    return new Pagination(new Table<Customer>(RECENT_CUSTOMERS_TABLE_HEADERS, this.recentCustomers));
   }
 }

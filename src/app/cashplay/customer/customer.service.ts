@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Repository } from '../../shared/Repository';
 import { Customer } from './Customer';
+import { TABLE_HEADERS, TableHeader } from '../../shared/table/Table';
 
 const customers: Customer[] = [
   new Customer('jalal', 'hosseiny'),
@@ -10,6 +11,10 @@ const customers: Customer[] = [
 
 @Injectable()
 export class CustomerService implements Repository<Customer> {
+
+  constructor(@Inject(TABLE_HEADERS) private headers: TableHeader[]) {
+    console.log(this.headers);
+  }
 
   all(): Customer[] {
     return customers;

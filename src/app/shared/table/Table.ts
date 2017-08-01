@@ -1,3 +1,5 @@
+import { InjectionToken } from '@angular/core';
+
 export class Table<T> {
   headers: TableHeader[];
   resources: T[];
@@ -31,3 +33,5 @@ export interface TableHeader {
   name: string;
   text: string;
 }
+
+export let TABLE_HEADERS = new InjectionToken<TableHeader[]>('table.headers');

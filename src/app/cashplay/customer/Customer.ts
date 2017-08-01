@@ -1,3 +1,4 @@
+import { TableHeader } from '../../shared/table/Table';
 export class Customer {
   firstName: string;
   lastName: string;
@@ -9,7 +10,7 @@ export class Customer {
   }
 }
 
-export const CustomerTableHeaders = [
+export const RECENT_CUSTOMERS_TABLE_HEADERS: TableHeader[] = [
   {name: 'firstName', text: 'First Name'},
   {name: 'lastName', text: 'Last Name'}
 ];
