@@ -1,7 +1,12 @@
 <art-panel [title]="title">
-
-  <art-table [table]="pagination.table"></art-table>
-  <button class="btn btn-sm" art-card-controls>Next</button>
-  <button class="btn btn-sm" art-card-controls>Previous</button>
+  <div class="d-flex flex-row-reverse align-items-baseline pagination-toolbar">
+    <ng-content select="[art-pagination-toolbar]"></ng-content>
+  </div>
+  <art-table [table]="pagination.table">
+  </art-table>
+  <div class="btn-group" role="group" art-card-controls>
+    <button type="button" class="btn btn-secondary">Next</button>
+    <button type="button" class="btn btn-secondary">Previous</button>
+  </div>
   <h6 art-card-controls>Page <strong>4</strong> of <strong>13</strong></h6>
 </art-panel>
