@@ -8,6 +8,7 @@ import { Table } from './Table';
 })
 export class TableComponent<T> implements OnInit {
   @Input() table: Table<T>;
+  selectedIndex: number = -1;
 
   constructor() {
   }
@@ -17,5 +18,13 @@ export class TableComponent<T> implements OnInit {
 
   rows() {
     return Table.rows(this.table);
+  }
+
+  selectRow(index) {
+    this.selectedIndex = index;
+  }
+
+  isSelected(index) {
+    return index === this.selectedIndex;
   }
 }

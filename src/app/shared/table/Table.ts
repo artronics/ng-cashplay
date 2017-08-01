@@ -9,13 +9,14 @@ export class Table<T> {
 
   // FiXME why it is called 16 times for 2x2 table??
   static rows<T>(table: Table<T>): string[][] {
-    const rows: string[][] = [[]];
+    const rows: string[][] = [];
 
     table.resources.forEach(res => {
       const cells = [];
       for (let i = 0; i < table.headers.length; i++) {
-        if (res[table.headers[i].name]) {
-          cells.push(res[table.headers[i].name]);
+        const cell = table.headers[i].name;
+        if (res[cell]) {
+          cells.push(res[cell]);
         } else {
           cells.push('---');
         }

@@ -1,3 +1,8 @@
-$hover-color: gainsboro;
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$hover-color: $table-bg-hover;
 $active-route-color: deepskyblue;
 $border-color: darkgrey;
+
+$table-select-color: $hover-color;
+
