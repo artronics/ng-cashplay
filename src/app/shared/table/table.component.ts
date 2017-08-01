@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Table } from './Table';
 
 @Component({
@@ -9,9 +9,13 @@ import { Table } from './Table';
 export class TableComponent<T> implements OnInit {
   @Input() table: Table<T>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  rows() {
+    return Table.rows(this.table);
+  }
 }

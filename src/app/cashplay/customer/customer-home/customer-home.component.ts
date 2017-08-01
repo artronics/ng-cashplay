@@ -17,7 +17,8 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   pagination() {
-    const customers = [new Customer(), new Customer ()];
-    return new Pagination(new Table<Customer>(['First Name', 'Last Name'], customers));
+    const customers = [new Customer('jalal', 'hos'), new Customer('ali', 'mogh')];
+    const headers = [{name: 'firstName', text: 'First Name'}, {name: 'lastName', text: 'Last Name'}];
+    return new Pagination(new Table<Customer>(headers, customers));
   }
 }

@@ -1,17 +1,12 @@
 <Table class="table table-hover">
   <thead>
   <tr>
-    <th *ngFor="let header of table.headers">{{header}}</th>
+    <th *ngFor="let header of table.headers">{{header.text}}</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>kir</td>
-    <td>kos</td>
-  </tr>
-  <tr>
-    <td>kun</td>
-    <td>dul</td>
+  <tr *ngFor="let row of rows()">
+    <td *ngFor="let cell of row">{{cell}}</td>
   </tr>
   </tbody>
 </Table>
