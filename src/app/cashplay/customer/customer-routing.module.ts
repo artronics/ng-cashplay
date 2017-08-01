@@ -1,10 +1,12 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import {CustomerComponent} from "./customer/customer.component";
-import {CustomerHomeComponent} from "./customer-home/customer-home.component";
-import {SearchCustomerComponent} from "./search-customer/search-customer.component";
-import {NewCustomerComponent} from "./new-customer/new-customer.component";
+import { SharedModule } from '../../shared/shared.module';
+
+import {CustomerComponent} from './customer/customer.component';
+import {CustomerHomeComponent} from './customer-home/customer-home.component';
+import {SearchCustomerComponent} from './search-customer/search-customer.component';
+import {NewCustomerComponent} from './new-customer/new-customer.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,10 @@ const routes: Routes = [
   declarations: [
     CustomerComponent, NewCustomerComponent, SearchCustomerComponent, CustomerHomeComponent
   ],
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+    SharedModule,
+  ],
   exports: [RouterModule]
 })
 export class CustomerRoutingModule {

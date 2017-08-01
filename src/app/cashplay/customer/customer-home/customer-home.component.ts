@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-home.component.scss']
 })
 export class CustomerHomeComponent implements OnInit {
+  title: 'kir';
 
   constructor() { }
 

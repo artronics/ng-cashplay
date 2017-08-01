@@ -1,7 +1,6 @@
 .layout {
   height: 100vh;
   padding: 0;
-  background-color: red;
 }
 .header{
   background-color: dodgerblue;
@@ -12,18 +11,18 @@
 }
 .main-row {
   height: 100%;
+  background-color: darkgrey;
 }
 .layout-container {
+  background-color: white;
 }
 
 .main-nav {
-  background-color: blue;
   width:20%;
-  padding: 0 5px;
 }
 .main-content {
   width:100%;
-  background-color: tomato;
+  margin: 0 2px;
 }
 .main-receipt {
   background-color: aqua;
