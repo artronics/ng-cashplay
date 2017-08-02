@@ -1,10 +1,10 @@
 import { InjectionToken } from '@angular/core';
 
 export class Table<T> {
-  headers: TableHeader[];
+  headers: TableHeader<T>[];
   resources: T[];
 
-  constructor(headers: TableHeader[], resources: T[]) {
+  constructor(headers: TableHeader<T>[], resources: T[]) {
     this.headers = headers;
     this.resources = resources;
   }
@@ -16,11 +16,11 @@ export class Table<T> {
     table.resources.forEach(res => {
       const cells = [];
       for (let i = 0; i < table.headers.length; i++) {
-        const cell = table.headers[i].name;
-        if (res[cell]) {
-          cells.push(res[cell]);
-        } else {
+        const cell = table.headers[i].fn(res);
+        if (cell === '') {
           cells.push('---');
+        } else {
+          cells.push(cell);
         }
       }
       rows.push(cells);
@@ -29,9 +29,9 @@ export class Table<T> {
     return rows;
   }
 }
-export interface TableHeader {
-  name: string;
+export interface TableHeader<T> {
   text: string;
+  fn(res: T): string;
 }
 
-export let TABLE_HEADERS = new InjectionToken<TableHeader[]>('table.headers');
+export let TABLE_HEADERS = new InjectionToken<TableHeader<any>[]>('table.headers');

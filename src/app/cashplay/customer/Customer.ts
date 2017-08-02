@@ -10,7 +10,7 @@ export class Customer {
   }
 }
 
-export const RECENT_CUSTOMERS_TABLE_HEADERS: TableHeader[] = [
-  {name: 'firstName', text: 'First Name'},
-  {name: 'lastName', text: 'Last Name'}
+export const RECENT_CUSTOMERS_TABLE_HEADERS: TableHeader<Customer>[] = [
+  {fn: res => res.firstName, text: 'First Name'},
+  {fn: res => res.lastName, text: 'Last Name'}
 ];

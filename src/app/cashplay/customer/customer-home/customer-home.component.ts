@@ -16,7 +16,7 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recentCustomers = this.customerService.all();
+    // this.recentCustomers = this.customerService.all();
   }
 
   pagination() {
