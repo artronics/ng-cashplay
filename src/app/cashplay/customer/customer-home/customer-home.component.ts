@@ -3,6 +3,7 @@ import { Pagination } from '../../../shared/pagination/Pagination';
 import { Table } from '../../../shared/table/Table';
 import { Customer, RECENT_CUSTOMERS_TABLE_HEADERS } from '../Customer';
 import { CustomerService } from '../customer.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'art-customer-home',
@@ -10,13 +11,13 @@ import { CustomerService } from '../customer.service';
   styleUrls: ['./customer-home.component.scss']
 })
 export class CustomerHomeComponent implements OnInit {
-  recentCustomers: Customer[];
+  recentCustomers: Observable<Customer[]>;
 
   constructor(private customerService: CustomerService) {
   }
 
   ngOnInit() {
-    // this.recentCustomers = this.customerService.all();
+    this.recentCustomers = this.customerService.all();
   }
 
   pagination() {

@@ -1,33 +1,15 @@
 import { InjectionToken } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 export class Table<T> {
   headers: TableHeader<T>[];
-  resources: T[];
+  resources: Observable<T[]>;
 
-  constructor(headers: TableHeader<T>[], resources: T[]) {
+  constructor(headers: TableHeader<T>[], resources: Observable<T[]>) {
     this.headers = headers;
     this.resources = resources;
   }
 
-  // FiXME why it is called 16 times for 2x2 table??
-  static rows<T>(table: Table<T>): string[][] {
-    const rows: string[][] = [];
-
-    table.resources.forEach(res => {
-      const cells = [];
-      for (let i = 0; i < table.headers.length; i++) {
-        const cell = table.headers[i].fn(res);
-        if (cell === '') {
-          cells.push('---');
-        } else {
-          cells.push(cell);
-        }
-      }
-      rows.push(cells);
-    });
-
-    return rows;
-  }
 }
 export interface TableHeader<T> {
   text: string;

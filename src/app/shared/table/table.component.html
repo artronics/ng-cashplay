@@ -5,8 +5,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of rows(); let i=index" (click)="selectRow(i)" [class.selected]="isSelected(i)">
-    <td *ngFor="let cell of row">{{cell}}</td>
+  <tr *ngFor="let row of table.resources | async; let i=index" (click)="selectRow(i)" [class.selected]="isSelected(i)">
+    <td *ngFor="let header of table.headers">{{header.fn(row) === '' ? '---' : header.fn(row) }}</td>
   </tr>
   </tbody>
 </Table>

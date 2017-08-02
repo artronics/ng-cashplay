@@ -17,7 +17,7 @@ export class TableComponent<T> implements OnInit {
   }
 
   rows() {
-    return Table.rows(this.table);
+    // return Table.rows(this.table);
   }
 
   selectRow(index) {

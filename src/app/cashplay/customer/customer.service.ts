@@ -17,7 +17,7 @@ const customers: Customer[] = [
 export class CustomerService implements Repository<Customer> {
 
   constructor(private api: ApiService,
-              @Inject(TABLE_HEADERS) private headers: TableHeader[],) {
+              @Inject(TABLE_HEADERS) private headers: TableHeader<Customer>[]) {
   }
 
   all(): Observable<Customer[]> {
