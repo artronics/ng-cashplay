@@ -5,6 +5,8 @@ import { TABLE_HEADERS, TableHeader } from '../../shared/table/Table';
 import { ApiService } from '../../api.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Pagable } from '../../shared/Pagable';
+import { APP_CONFIG } from '../../app.config';
 
 
 const customers: Customer[] = [
@@ -14,13 +16,30 @@ const customers: Customer[] = [
 ];
 
 @Injectable()
-export class CustomerService implements Repository<Customer> {
+export class CustomerService implements Repository<Customer>, Pagable<Customer> {
+  resourcesPerPage: number;
 
-  constructor(private api: ApiService,
+  constructor(@Inject(APP_CONFIG) private appConfig,
+              private api: ApiService,
               @Inject(TABLE_HEADERS) private headers: TableHeader<Customer>[]) {
+
+    this.resourcesPerPage = appConfig.defaultResourcesPerPage;
   }
 
   all(): Observable<Customer[]> {
     return Observable.of<Customer[]>(customers);
+  }
+
+
+  goToPage(page: number): Observable<Customer[]> {
+    return Observable.of<Customer[]>(customers.slice(0, page));
+  }
+
+  first(): Observable<Customer[]> {
+    return Observable.of<Customer[]>(customers.slice(0, 1));
+  }
+
+  next(): Observable<Customer[]> {
+    return null;
   }
 }

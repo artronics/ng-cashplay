@@ -12,8 +12,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CustomerHomeComponent implements OnInit {
   recentCustomers: Observable<Customer[]>;
+  recentCustomersPagination: Pagination<Customer>;
 
   constructor(private customerService: CustomerService) {
+    const table = new Table(RECENT_CUSTOMERS_TABLE_HEADERS, Observable.of<Customer[]>([]));
+    this.recentCustomersPagination = new Pagination(this.customerService, table);
   }
 
   ngOnInit() {
@@ -21,6 +24,7 @@ export class CustomerHomeComponent implements OnInit {
   }
 
   pagination() {
-    return new Pagination(new Table<Customer>(RECENT_CUSTOMERS_TABLE_HEADERS, this.recentCustomers));
+    // return new Pagination(new Table<Customer>(RECENT_CUSTOMERS_TABLE_HEADERS, this.recentCustomers));
+    return this.recentCustomersPagination;
   }
 }
