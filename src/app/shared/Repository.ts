@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+
 export interface Repository<T> {
-  all(): T[];
+  all(): Observable<T[]>;
 }

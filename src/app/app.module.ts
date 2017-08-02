@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import 'hammerjs';
+import { APP_CONFIG, CASHPLAY_CONFIG } from './app.config';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import 'hammerjs';
     CashplayModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {provide: APP_CONFIG, useValue: CASHPLAY_CONFIG},
+    ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
