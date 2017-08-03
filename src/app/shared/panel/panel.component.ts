@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'art-panel',
@@ -7,9 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
   @Input() title: string;
-  constructor() { }
+  @Input() collapsable = false;
+  @Input() collapsed = true;
+
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  onCollapse() {
+    this.collapsed = !this.collapsed;
+  }
 }

@@ -1,7 +1,12 @@
 <div class="'art-card card">
   <div class="card-block">
-    <h5 class="card-title">{{title}}</h5>
-    <div class="card-text">
+    <div class="d-flex flex-row justify-content-between align-items-baseline">
+      <h5 class="card-title">{{title}}</h5>
+      <i class="fa fa-2x collapse-caret" (click)="onCollapse()"
+         [ngClass]="{'hidden': !collapsable, 'fa-caret-right': !collapsed, 'fa-caret-down': collapsed}"
+         data-toggle="collapse" data-target="#card-collapse"></i>
+    </div>
+    <div class="card-text " [ngClass]="{'collapse':collapsable}" id="card-collapse">
       <ng-content></ng-content>
       <div class="card-controls d-flex flex-row-reverse align-items-baseline">
         <ng-content select="[art-card-controls]"></ng-content>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Pagination } from './Pagination';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/switchMap';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent<T> implements OnInit {
+export class PaginationComponent<T> implements OnInit, AfterViewInit {
 
   @Input() title: string;
   @Input() pagination: Pagination<T>;
@@ -18,27 +18,36 @@ export class PaginationComponent<T> implements OnInit {
   currentPage = 1;
   totalPages: number;
 
-  page = new Subject<number>();
-
+  private page = new Subject<number>();
+  foo: Observable<T[]>;
   constructor() {
   }
 
   ngOnInit() {
     this.totalPages = this.pagination.totalPages();
-
-    this.pagination.table.resources = this.page.switchMap(page => page ?
-      this.pagination.paginator.goToPage(page) : this.pagination.paginator.goToPage(1)
+    this.pagination.table.resources = this.page.switchMap(page => {
+        return page ?
+          this.pagination.paginator.goToPage(page) : this.pagination.paginator.goToPage(1);
+      }
     ).catch(error => {
       console.log(error);
       return Observable.of<T[]>([]);
     });
   }
 
+  // FIXME it causes child component (Table) to throw error.
+  ngAfterViewInit() {
+    // console.log(this.pagination.table);
+    this.page.next(this.currentPage);
+  }
   onNext() {
-    this.page.next(this.currentPage++);
+    console.log(this.pagination.table.resources);
+    this.currentPage += 1;
+    this.page.next(this.currentPage);
   }
 
   onPrevious() {
-    this.page.next(this.currentPage--);
+    this.currentPage -= 1;
+    this.page.next(this.currentPage);
   }
 }
