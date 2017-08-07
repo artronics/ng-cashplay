@@ -1,3 +1,17 @@
-<p>
-  new-customer works!
-</p>
+<form (ngSubmit)="onSave()" #newCustomerForm="ngForm">
+  <md-input-container>
+    <input mdInput type="text" placeholder="First Name" required
+           [(ngModel)]="customer.firstName" name="firstName" #firstName="ngModel">
+    <md-error [hidden]="firstName.valid || firstName.pristine">
+      First Name is required
+    </md-error>
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput type="text" placeholder="Last Name" required
+           [(ngModel)]="customer.lastName" name="lastName" #lastName="ngModel">
+    <md-error [hidden]="lastName.valid || lastName.pristine">
+      First Name is required
+    </md-error>
+  </md-input-container>
+</form>

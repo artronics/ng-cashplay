@@ -1,13 +1,16 @@
-import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {LayoutComponent} from "./layout/layout.component";
-import {NavComponent} from "./nav/nav.component";
-import {CustomerComponent} from "./customer/customer/customer.component";
-import {CustomerHomeComponent} from "./customer/customer-home/customer-home.component";
-import {HomeComponent} from "./home/home/home.component";
-import {SearchCustomerComponent} from "./customer/search-customer/search-customer.component";
-import {NewCustomerComponent} from "./customer/new-customer/new-customer.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdToolbarModule } from '@angular/material';
+
+import { LayoutComponent } from './layout/layout.component';
+import { NavComponent } from './nav/nav.component';
+import { CustomerComponent } from './customer/customer/customer.component';
+import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
+import { HomeComponent } from './home/home/home.component';
+import { SearchCustomerComponent } from './customer/search-customer/search-customer.component';
+import { NewCustomerComponent } from './customer/new-customer/new-customer.component';
 
 const routes: Routes = [
   {
@@ -31,7 +34,12 @@ const routes: Routes = [
     LayoutComponent,
     NavComponent,
   ],
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+
+    BrowserAnimationsModule,
+    MdToolbarModule,
+  ],
   exports: [RouterModule]
 })
 export class CashplayRoutingModule {

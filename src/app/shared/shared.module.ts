@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdCardModule } from '@angular/material';
+
 import { PanelComponent } from './panel/panel.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { TableComponent } from './table/table.component';
@@ -13,7 +16,11 @@ import { ResourceListComponent } from './resource-list/resource-list.component';
     TableComponent,
     ResourceListComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule,
+    MdCardModule,
+  ],
   exports: [
     PanelComponent,
     PaginationComponent,

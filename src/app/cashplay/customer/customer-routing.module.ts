@@ -1,13 +1,15 @@
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdInputModule } from '@angular/material';
 import { SharedModule } from '../../shared/shared.module';
 
-import {CustomerComponent} from './customer/customer.component';
-import {CustomerHomeComponent} from './customer-home/customer-home.component';
-import {SearchCustomerComponent} from './search-customer/search-customer.component';
-import {NewCustomerComponent} from './new-customer/new-customer.component';
+import { CustomerComponent } from './customer/customer.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { SearchCustomerComponent } from './search-customer/search-customer.component';
+import { NewCustomerComponent } from './new-customer/new-customer.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MdInputModule,
   ],
   exports: [RouterModule],
   schemas: [NO_ERRORS_SCHEMA]
