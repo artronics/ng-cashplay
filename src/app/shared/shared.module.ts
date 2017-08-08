@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdCardModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdPaginatorModule } from '@angular/material';
 
 import { PanelComponent } from './panel/panel.component';
 import { PaginationComponent } from './pagination/pagination.component';
@@ -20,6 +20,8 @@ import { ResourceListComponent } from './resource-list/resource-list.component';
     CommonModule,
     BrowserAnimationsModule,
     MdCardModule,
+    MdPaginatorModule,
+    MdButtonModule,
   ],
   exports: [
     PanelComponent,

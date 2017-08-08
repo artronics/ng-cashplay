@@ -1,17 +1,37 @@
-<form (ngSubmit)="onSave()" #newCustomerForm="ngForm">
-  <md-input-container>
-    <input mdInput type="text" placeholder="First Name" required
-           [(ngModel)]="customer.firstName" name="firstName" #firstName="ngModel">
-    <md-error [hidden]="firstName.valid || firstName.pristine">
-      First Name is required
-    </md-error>
-  </md-input-container>
+<form (ngSubmit)="onSave()" #newCustomerForm="ngForm" class="new-customer-form">
+  <table>
+    <tbody>
+    <tr>
+      <td rowspan="3">
+        <div class="customer-photo">
 
-  <md-input-container>
-    <input mdInput type="text" placeholder="Last Name" required
-           [(ngModel)]="customer.lastName" name="lastName" #lastName="ngModel">
-    <md-error [hidden]="lastName.valid || lastName.pristine">
-      First Name is required
-    </md-error>
-  </md-input-container>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput type="text" placeholder="First Name" required
+                 [(ngModel)]="customer.firstName" name="firstName" #firstName="ngModel">
+          <md-error [hidden]="firstName.valid || firstName.pristine">
+            First Name is required
+          </md-error>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput type="text" placeholder="Last Name" required
+                 [(ngModel)]="customer.lastName" name="lastName" #lastName="ngModel">
+          <md-error [hidden]="lastName.valid || lastName.pristine">
+            First Name is required
+          </md-error>
+        </md-input-container>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
 </form>

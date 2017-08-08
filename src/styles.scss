@@ -17,6 +17,14 @@ $btn-border-radius-sm:0px;
 .hidden {
   display: none;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.all-full-width > * {
+  width: 100%;
+}
 .active-route{
   background-color: deepskyblue !important;
 }

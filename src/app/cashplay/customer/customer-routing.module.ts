@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule, MdTabsModule } from '@angular/material';
+import { MdGridListModule, MdInputModule, MdTabsModule } from '@angular/material';
 import { SharedModule } from '../../shared/shared.module';
 
 import { CustomerComponent } from './customer/customer.component';
@@ -27,6 +27,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MdInputModule,
     MdTabsModule,
+    MdGridListModule,
   ],
   exports: [RouterModule],
   schemas: [NO_ERRORS_SCHEMA]
