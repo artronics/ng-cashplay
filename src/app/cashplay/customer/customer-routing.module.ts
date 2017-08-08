@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdInputModule } from '@angular/material';
+import { MdInputModule, MdTabsModule } from '@angular/material';
 import { SharedModule } from '../../shared/shared.module';
 
 import { CustomerComponent } from './customer/customer.component';
@@ -13,22 +13,8 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
 
 const routes: Routes = [
   {
-    path: 'customer', component: CustomerComponent, children: [
-    // {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: CustomerHomeComponent},
-    {
-      path: '', children: [
-      {path: 'home', component: CustomerHomeComponent},
-      // {path: 'search', component: SearchCustomerComponent},
-      {path: 'new', component: NewCustomerComponent},
-    ]
-    },
-  ]
-  },
-  {
-    path: '', component: CustomerComponent, children: [
-    {path: 'search', component: SearchCustomerComponent},
-  ]},
+    path: 'customer', component: CustomerComponent
+  }
 ];
 @NgModule({
   declarations: [
@@ -40,6 +26,7 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MdInputModule,
+    MdTabsModule,
   ],
   exports: [RouterModule],
   schemas: [NO_ERRORS_SCHEMA]
