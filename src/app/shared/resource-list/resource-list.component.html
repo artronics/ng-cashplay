@@ -1,11 +1,15 @@
-<div>
-  <art-pagination [title]="title" [pagination]="pagination">
-    <div art-pagination-toolbar class="pagination-btn-group" role="group">
-      <button md-button type="button">Delete</button>
-      <button md-button type="button">Edit</button>
-      <button md-button type="button">View</button>
+  <art-panel [title]="title">
+    <div class="resource-list-content">
+      <div art-pagination-toolbar class="pagination-btn-group" role="group">
+        <button md-raised-button type="button">Add to Receipt</button>
 
-      <button md-raised-button type="button">Add to Receipt</button>
+        <button md-button type="button">View</button>
+        <button md-button type="button">Edit</button>
+        <button md-button type="button">Delete</button>
+      </div>
+      <div>
+        <art-table [resource]="resource">
+        </art-table>
+      </div>
     </div>
-  </art-pagination>
-</div>
+  </art-panel>

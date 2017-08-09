@@ -3,6 +3,9 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerService } from './customer.service';
 import { TABLE_HEADERS } from '../../shared/table/Table';
 import { RECENT_CUSTOMERS_TABLE_HEADERS } from './Customer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdTab, MdTableModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 @NgModule({
   declarations: [],
@@ -12,6 +15,9 @@ import { RECENT_CUSTOMERS_TABLE_HEADERS } from './Customer';
   ],
   imports: [
     CustomerRoutingModule,
+    BrowserAnimationsModule,
+    MdTableModule,
+    CdkTableModule,
   ],
   exports: [CustomerRoutingModule],
 })
