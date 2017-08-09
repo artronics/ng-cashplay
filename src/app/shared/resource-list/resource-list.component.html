@@ -1,14 +1,14 @@
   <art-panel [title]="title">
     <div class="resource-list-content">
       <div art-pagination-toolbar class="pagination-btn-group" role="group">
-        <button md-raised-button type="button">Add to Receipt</button>
+        <button md-raised-button type="button" [disabled]="!selectedRow">Add to Receipt</button>
 
-        <button md-button type="button">View</button>
-        <button md-button type="button">Edit</button>
-        <button md-button type="button">Delete</button>
+        <button md-button type="button" [disabled]="!selectedRow">View</button>
+        <button md-button type="button" [disabled]="!selectedRow">Edit</button>
+        <button md-button type="button" [disabled]="!selectedRow">Delete</button>
       </div>
       <div>
-        <art-table [resource]="resource">
+        <art-table [resource]="resource" (select)="onSelect($event)">
         </art-table>
       </div>
     </div>

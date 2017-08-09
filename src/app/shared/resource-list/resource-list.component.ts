@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Table } from '../table/Table';
 import { Pagination } from '../pagination/Pagination';
 import { Resource } from './Resource';
 
@@ -14,9 +13,16 @@ export class ResourceListComponent<T> implements OnInit {
   @Input() resource: Resource<T>;
   @Input() pagination: Pagination<T>;
 
+  selectedRow: T;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.selectedRow);
+  }
+
+  onSelect(row: T) {
+    this.selectedRow = row;
   }
 
 }

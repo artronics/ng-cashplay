@@ -14,7 +14,7 @@ import { Resource } from '../../../shared/resource-list/Resource';
 export class CustomerHomeComponent implements OnInit {
   recentCustomers: Observable<Customer[]>;
   recentCustomersPagination: Pagination<Customer>;
-  resource: Resource<any> = new CustomerResource();
+  resource: Resource<Customer> = new CustomerResource();
 
   constructor(private customerService: CustomerService) {
     const table = new Table(RECENT_CUSTOMERS_TABLE_HEADERS, Observable.of<Customer[]>([]));

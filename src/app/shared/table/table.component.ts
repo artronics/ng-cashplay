@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Table } from './Table';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk';
@@ -16,31 +16,29 @@ import { Resource } from '../resource-list/Resource';
 export class TableComponent<T> implements OnInit {
   @Input() table: Table<T>;
   @Input() resource: Resource<T>;
+  @Output() select = new EventEmitter<T>();
 
-  selectedIndex: number = -1;
+  selectedRow: T;
 
   exampleDatabase = new ExampleDatabase();
-  dataSource: ExampleDataSource | null;
+
+  // dataSource: ExampleDataSource | null;
 
   constructor() {
-
   }
 
-  rows() {
-    // return Table.rows(this.table);
+  selectRow(row) {
+    this.selectedRow = row;
+    this.select.emit(row);
   }
 
-  selectRow(index) {
-    this.selectedIndex = index;
-  }
-
-  isSelected(index) {
-    return index === this.selectedIndex;
+  isSelected(row) {
+    return row === this.selectedRow;
   }
 
 
   ngOnInit() {
-    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    // this.dataSource = this.resource;
   }
 }
 
