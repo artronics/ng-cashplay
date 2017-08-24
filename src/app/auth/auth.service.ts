@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
 import { Credentials } from './Credentials';
 import { Http, Response } from '@angular/http';
 import { APP_CONFIG } from '../AppConfig';
@@ -33,6 +32,7 @@ export class AuthService {
 
         const account: Account = res.json() as Account;
         if (account) {
+          account.loggedInUser = account.users.filter(u => u.email === cred.email)[0];
           window.localStorage.setItem('account', JSON.stringify(account));
         }
 

@@ -1,6 +1,15 @@
 <div class="art-cashplay-container">
   <md-toolbar color="primary" class="art-toolbar">
     <span>Cashplay</span>
+    <span class="art-toolbar-middle"></span>
+    <span>
+      <button md-button [mdMenuTriggerFor]="userMenu" class="art-capitalize art-user-menu"><i
+        class="fa fa-user-circle-o"></i> {{account.loggedInUser.name}} <i class="fa fa-caret-down"></i></button>
+      <md-menu #userMenu="mdMenu">
+        <button md-menu-item><i class="fa fa-exchange"></i> Change User</button>
+        <button md-menu-item><i class="fa fa-sign-out"></i> Logout</button>
+      </md-menu>
+    </span>
   </md-toolbar>
   <div class="art-container">
     <div class="art-nav">

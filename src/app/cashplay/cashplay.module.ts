@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { MdSidenavModule, MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdMenuModule, MdSidenavModule, MdToolbarModule } from '@angular/material';
 
 import { CashplayRoutingModule } from './cashplay-routing.module';
 import { CustomerModule } from './customer/customer.module';
@@ -21,6 +21,8 @@ import { ItemModule } from './item/item.module';
     OrderModule,
 
     MdToolbarModule,
+    MdButtonModule,
+    MdMenuModule,
     MdSidenavModule,
 
     CashplayRoutingModule,
