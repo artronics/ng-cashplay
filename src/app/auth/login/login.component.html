@@ -1,0 +1,16 @@
+<art-card title="Login" class="art-login-form">
+  <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+    <md-input-container>
+      <input mdInput required #email="ngModel" name="email" [(ngModel)]="credentials.email" placeholder="Email" type="email"
+             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+      <md-error *ngIf="email.errors && email.errors.required">Email required</md-error>
+      <md-error *ngIf="email.errors && email.errors.pattern">Email has wrong format</md-error>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput required #password="ngModel" name="password" [(ngModel)]="credentials.password" placeholder="Password" type="password">
+      <md-error>Password is required</md-error>
+    </md-input-container>
+  </form>
+  <p *ngIf="authFailed" class="art-error">Email or Password does not match.</p>
+  <button md-raised-button card-action color="primary" (click)="onLogin()" [disabled]="!loginForm.valid">LOGIN</button>
+</art-card>

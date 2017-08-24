@@ -1,0 +1,20 @@
+.art-cashplay-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.art-container {
+  height: 100%;
+  display: flex;
+}
+.art-content {
+  padding: 0 2px;
+  width:100%;
+}
+.art-nav {
+  width:20%;
+}
+.art-receipt {
+  width: 30%;
+}

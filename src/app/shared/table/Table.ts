@@ -1,24 +1,35 @@
-import { InjectionToken } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { CASHPLAY_CONFIG } from '../../AppConfig';
+import { Page } from '../../api.service';
 
 export class Table<T> {
-  headers: TableHeader<T>[];
-  resources: Observable<T[]>;
+  displayedColumns: string[];
+  columns: Column<T>[];
+  page: Page;
+  pageSizeOptions?: number[];
 
-  constructor(headers: TableHeader<T>[], resources: Observable<T[]>) {
-    this.headers = headers;
-    this.resources = resources;
+
+  constructor(displayedColumns: string[],
+              columns: Column<T>[],
+              page: Page,
+              pageSizeOptions?: number[]) {
+    this.displayedColumns = displayedColumns;
+    this.columns = columns;
+    this.page = page;
+    pageSizeOptions
+      ? this.pageSizeOptions = pageSizeOptions
+      : this.pageSizeOptions = CASHPLAY_CONFIG.pageSizeOptions;
   }
-
 }
-export interface TableHeader<T> {
+
+export interface Column<T> {
   id: string;
   text: string;
-}
+  extraClasses?: string[] | string;
+  // FIXME conditional attributes does not work for md-sort-header: [attr.md-sort-header]="column.id"
+  sort?: boolean;
+  // FIXME don't know how to apply it and also not sure about 'start'
+  sortStart?: 'asc' | 'dsc' | 'start';
 
-export interface ColumnDefs<T> {
-  columns: TableHeader<T>[];
-  columnIds: string[];
-}
+  cellValue?(row: T): any | string | number | Date;
 
-export let TABLE_HEADERS = new InjectionToken<TableHeader<any>[]>('table.headers');
+}

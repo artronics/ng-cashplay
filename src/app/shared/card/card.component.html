@@ -1,0 +1,9 @@
+<md-card class="art-card">
+  <md-card-title>{{title}}</md-card-title>
+  <md-card-content>
+    <ng-content></ng-content>
+  </md-card-content>
+  <md-card-actions align="end">
+    <ng-content select="[card-action]"></ng-content>
+  </md-card-actions>
+</md-card>

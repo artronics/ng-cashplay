@@ -1,22 +1,30 @@
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
 
-import {CashplayRoutingModule} from './cashplay-routing.module';
+import { MdSidenavModule, MdToolbarModule } from '@angular/material';
+
+import { CashplayRoutingModule } from './cashplay-routing.module';
 import { CustomerModule } from './customer/customer.module';
-import { HomeModule } from './home/home.module';
+
+import { CashplayComponent } from './cashplay/cashplay.component';
+import { NavComponent } from './nav/nav.component';
+import { OrderModule } from './order/order.module';
+import { ItemModule } from './item/item.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CashplayComponent,
+    NavComponent,
+  ],
   imports: [
-    FormsModule,
-
-    HomeModule,
     CustomerModule,
+    ItemModule,
+    OrderModule,
+
+    MdToolbarModule,
+    MdSidenavModule,
+
     CashplayRoutingModule,
   ],
-  exports: [
-    CashplayRoutingModule,
-  ]
+  exports: [CashplayRoutingModule]
 })
-export class CashplayModule {
-}
+export class CashplayModule {}

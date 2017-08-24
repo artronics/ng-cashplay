@@ -1,15 +1,19 @@
-  <art-panel [title]="title">
-    <div class="resource-list-content">
-      <div art-pagination-toolbar class="pagination-btn-group" role="group">
-        <button md-raised-button type="button" [disabled]="!selectedRow">Add to Receipt</button>
+<art-card [title]="title">
+  <art-error-box [errorMsg]="errorMsg"></art-error-box>
+  <div [ngClass]="{'hide': errorMsg}">
+    <div class="art-resource-list-toolbar" role="group">
+      <button md-raised-button type="button" class="art-add-to-receipt" (click)="onAddToReceipt()"
+              [disabled]="disabled()">
+        Add to Receipt
+      </button>
 
-        <button md-button type="button" [disabled]="!selectedRow">View</button>
-        <button md-button type="button" [disabled]="!selectedRow">Edit</button>
-        <button md-button type="button" [disabled]="!selectedRow">Delete</button>
-      </div>
-      <div>
-        <art-table [resource]="resource" (select)="onSelect($event)">
-        </art-table>
-      </div>
+      <button md-button type="button" class="art-view" (click)="onView()" [disabled]="disabled()">View</button>
+      <button md-button type="button" class="art-edit" (click)="onEdit()" [disabled]="disabled()">Edit</button>
+      <button md-button type="button" class="art-delete" (click)="onDelete()" [disabled]="disabled()">Delete</button>
     </div>
-  </art-panel>
+    <div>
+      <art-table [table]="table" [dataSource]="dataSource" (rowSelected)="onRowSelection($event)"
+                 (page)="onPaginationChange($event)"></art-table>
+    </div>
+  </div>
+</art-card>

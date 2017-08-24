@@ -1,0 +1,13 @@
+<form #newCustomerForm="ngForm" (ngSubmit)="onSubmit()">
+  <md-input-container>
+    <input mdInput placeholder="First Name" required name="firstName"
+      [(ngModel)]="customer.firstName" #firstName="ngModel">
+    <md-error>First Name is required</md-error>
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput placeholder="Last Name" required name="lastName"
+           [(ngModel)]="customer.lastName" #lastName="ngModel">
+    <md-error>Last Name is required</md-error>
+  </md-input-container>
+</form>

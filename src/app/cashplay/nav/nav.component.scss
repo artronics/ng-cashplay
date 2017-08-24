@@ -1,18 +1,14 @@
 @import "../../../variables";
 
-.main-nav a{
-    width:100%;
-    padding: 10px 5px;
-    color: #000;
-    display: block;
-  border-bottom: 2px solid $border-color;
+.art-nav a{
+  display: block;
+  width:100%;
+  padding: 10px 5px;
+  color: #000;
+  display: block;
+  //border-bottom: 2px solid $border-color;
   &:hover {
-    background-color: $hover-color;
+    background-color: $nav-hover-color;
     font-style: italic;
   }
-}
-
-.main-nav .active-route {
-  padding-left: 10px;
-  border-bottom-color: $active-route-color;
 }

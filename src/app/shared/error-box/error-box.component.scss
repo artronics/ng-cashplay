@@ -1,0 +1,7 @@
+@import "../../../variables";
+
+.art-error-box {
+  display: flex;
+  justify-content: center;
+  color: $error-color;
+}

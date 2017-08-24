@@ -1,27 +1,4 @@
-<!--<nav class="d-flex flex-column">-->
-<!--<div class="d-flex flex-row justify-content-around tab-bar">-->
-<!--<div routerLink="home" routerLinkActive="active-route" class="tab-name d-flex justify-content-center align-items-center">-->
-<!--Home-->
-<!--</div>-->
-<!--<div routerLink="search"  routerLinkActive="active-route" class="tab-name d-flex justify-content-center align-items-center">-->
-<!--Search-->
-<!--</div>-->
-<!--<div routerLink="new"  routerLinkActive="active-route" class="tab-name d-flex justify-content-center align-items-center">-->
-<!--New Customer-->
-<!--</div>-->
-<!--</div>-->
-<!--</nav>-->
-<md-tab-group class="tab-content">
-  <md-tab label="Home">
-    <art-customer-home></art-customer-home>
-  </md-tab>
-  <md-tab label="Search">
-    <art-search-customer></art-search-customer>
-  </md-tab>
-  <md-tab label="New Customer">
-    <art-new-customer></art-new-customer>
-  </md-tab>
-</md-tab-group>
-<!--<div class="tab-content">-->
-<!--<router-outlet></router-outlet>-->
-<!--</div>-->
+<art-card class="art-customer" title="Customers">
+  <art-customer-search (newCustomer)="newCustomer()"></art-customer-search>
+  <art-recently-added-customers (editCustomer)="editCustomer($event)"></art-recently-added-customers>
+</art-card>

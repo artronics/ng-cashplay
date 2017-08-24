@@ -1,0 +1,23 @@
+<art-card [title]="'Search Items'">
+  <md-input-container class="art-search-input">
+    <input mdInput [(ngModel)]="q" (keyup)="search(searchItemsInput.value)" #searchItemsInput type="search"
+           placeholder="Search">
+  </md-input-container>
+  <button md-raised-button class="art-search-button" [disabled]="q==''">
+    <md-icon class="fa fa-search"></md-icon>
+    Search
+  </button>
+  <a md-raised-button color="primary" card-action>
+    <md-icon class="fa fa-plus"></md-icon>
+    New Item</a>
+
+  <art-resource-list
+    [title]="'Search Results:'"
+    [dataSource]="dataSource"
+    [table]="table"
+    [errorMsg]="connectionError"
+    [ngClass]="{'hide': dataLength==0 && !connectionError}"
+    (paginationChange)="onPaginationChange($event)"
+    (rowSelection)="selectedRow($event)"
+  ></art-resource-list>
+</art-card>

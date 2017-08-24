@@ -1,0 +1,9 @@
+<art-dialog [title]="'Edit Customer [ID:'+editingCustomer.id+']'">
+  <art-new-customer-form #form (save)="onEditCustomer($event)" [customer]="editingCustomer"></art-new-customer-form>
+
+  <button art-dialog-action md-button md-dialog-close color="primary">CANCEL</button>
+  <button art-dialog-action md-raised-button color="primary"
+          [disabled]="!form.valid() || submitting" (click)="form.onSubmit()">
+    <i *ngIf="submitting" class="fa fa-spinner fa-spin"></i> SAVE
+  </button>
+</art-dialog>

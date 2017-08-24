@@ -1,0 +1,21 @@
+<art-card [title]="'Search Customers'">
+  <md-input-container class="art-search-input">
+    <input mdInput [(ngModel)]="q" #searchCustomerInput (keyup)="search(searchCustomerInput.value)" type="search"
+           placeholder="Search">
+  </md-input-container>
+  <button md-raised-button class="art-search-button" (click)="search()" [disabled]="q==''">
+    <md-icon class="fa fa-search"></md-icon>
+    Search
+  </button>
+  <a md-raised-button  color="primary" card-action (click)="onNewCustomer()">
+    <md-icon class="fa fa-plus"></md-icon> New Customer</a>
+
+  <art-resource-list [ngClass]="{'hide': dataLength == 0}"
+                     [table]="table" [title]="'Search Results:'"
+                     [dataSource]="dataSource"
+                     (paginationChange)="onPaginationChange($event)"
+                     (rowSelection)="selectedRow($event)"
+  >
+
+  </art-resource-list>
+</art-card>

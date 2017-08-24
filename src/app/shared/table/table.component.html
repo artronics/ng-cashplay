@@ -1,11 +1,20 @@
-<md-table #table [dataSource]="resource">
+<md-table #tableRef mdSort [dataSource]="dataSource">
 
-  <ng-container [cdkColumnDef]="column.id" *ngFor="let column of resource.columns.columns">
-    <md-header-cell *cdkHeaderCellDef> {{column.text}}</md-header-cell>
-    <md-cell *cdkCellDef="let row"> {{row[column.id]}}</md-cell>
+  <ng-container *ngFor="let column of table.columns" [cdkColumnDef]="column.id">
+    <md-header-cell *cdkHeaderCellDef md-sort-header> {{column.text}}</md-header-cell>
+    <md-cell *cdkCellDef="let row" [ngClass]="column.extraClasses"> {{column.cellValue ? column.cellValue(row) :
+      row[column.id]}}
+    </md-cell>
   </ng-container>
 
-  <md-header-row *cdkHeaderRowDef="resource.columns.columnIds"></md-header-row>
-  <md-row *cdkRowDef="let row; columns: resource.columns.columnIds;" class="table-row"
-          (click)="selectRow(row)" [ngClass]="{'selected': isSelected(row)}"></md-row>
+  <md-header-row *cdkHeaderRowDef="table.displayedColumns"></md-header-row>
+  <md-row *cdkRowDef="let row; columns: table.displayedColumns" class="art-table-row"
+          (click)="selectRow(row)" [ngClass]="{'art-table-row-selected': isSelectedRow() === row}"></md-row>
 </md-table>
+<!--TODO clean up this mess. *ngIf does not work because table needs #paginator -->
+<md-paginator [ngClass]="{'hide': !table.page || table.page.length <= table.page.pageSize}" #paginator
+              [pageSizeOptions]="table.pageSizeOptions? table.pageSizeOptions: []"
+              [length]="table.page?.length? table.page.length : 0"
+              [pageSize]="table.page?.pageSize? table.page.pageSize : 1000"
+              (page)="pageEvent = $event;onPaginationChange($event)">
+</md-paginator>

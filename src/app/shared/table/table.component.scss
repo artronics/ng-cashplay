@@ -1,11 +1,11 @@
 @import "../../../variables";
 
-.table-row {
+.art-table-row {
   &:hover {
     background-color: $hover-color;
   }
 }
-.selected {
-  background-color: $table-select-color !important;
-}
 
+.art-table-row-selected {
+  background-color: $hover-color;
+}

@@ -14,25 +14,28 @@ $btn-border-radius-sm:0px;
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.hidden {
-  display: none;
+body {
+  margin:0;
+  font-family: Helvetica;
+}
+.hide {
+  display: none !important;
 }
 
-.full-width {
-  width: 100%;
+.art-capitalize {
+  text-transform: capitalize;
+}
+.art-snack-error {
+  background-color: $error-color !important;
+}
+.art-snack-success {
+  background-color: $success-color !important;
 }
 
-.all-full-width > * {
-  width: 100%;
-}
-.active-route{
-  background-color: deepskyblue !important;
+.art-error {
+  color: $error-color;
 }
 
-.card-controls * {
-  margin-left: 10px;
-}
-
-.collapse-caret {
-  //margin-right: 2px;
+.art-search-input {
+  width: 33%;
 }

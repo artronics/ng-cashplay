@@ -1,45 +1,43 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { CardComponent } from './card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdButtonModule,
   MdCardModule,
+  MdDialogModule,
   MdPaginatorModule,
-  MdTableModule,
-  MdSidenavModule,
+  MdSortModule,
+  MdTableModule
 } from '@angular/material';
-import { CdkTableModule } from '@angular/cdk';
-
-import { PanelComponent } from './panel/panel.component';
-import { PaginationComponent } from './pagination/pagination.component';
 import { TableComponent } from './table/table.component';
+import { CdkTableModule } from '@angular/cdk';
 import { ResourceListComponent } from './resource-list/resource-list.component';
+import { ErrorBoxComponent } from './error-box/error-box.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
-    PanelComponent,
-    PaginationComponent,
+    CardComponent,
     TableComponent,
     ResourceListComponent,
+    ErrorBoxComponent,
+    DialogComponent,
   ],
   imports: [
-    CommonModule,
     BrowserAnimationsModule,
-    MdCardModule,
-    MdPaginatorModule,
     MdButtonModule,
+    MdCardModule,
     MdTableModule,
     CdkTableModule,
-    MdSidenavModule,
+    MdSortModule,
+    MdPaginatorModule,
+    MdDialogModule,
   ],
   exports: [
-    PanelComponent,
-    PaginationComponent,
+    CardComponent,
     TableComponent,
     ResourceListComponent,
-  ],
-  schemas: []
+    DialogComponent,
+  ]
 })
-export class SharedModule {
-}
+export class SharedModule {}

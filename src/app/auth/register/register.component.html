@@ -1,0 +1,26 @@
+<art-card title="Register">
+  <form #registerForm="ngForm" (ngSubmit)="onRegister()" class="art-registration-form">
+    <md-input-container>
+      <input mdInput required #name="ngModel" name="name" [(ngModel)]="registration.name" placeholder="Your Name" type="text">
+      <md-error>Name is required</md-error>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput required #email="ngModel" name="email" [(ngModel)]="registration.email" placeholder="Email" type="email">
+      <md-error>Email required</md-error>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput required #account="ngModel" name="account" [(ngModel)]="registration.account" placeholder="Your Company or Bussiness" type="text">
+      <md-error>Company name is required</md-error>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput required #password="ngModel" name="password" [(ngModel)]="registration.password" placeholder="Password" type="password">
+      <md-error>Password is required</md-error>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput required #passwordConfirm="ngModel" name="passwordConfirm" [(ngModel)]="registration.passwordConfirm" placeholder="Confirm Password" type="password">
+      <md-error>Password is required</md-error>
+    </md-input-container>
+
+  </form>
+  <button md-raised-button color="primary" card-action [disabled]="!registerForm.valid"> REGISTER</button>
+</art-card>

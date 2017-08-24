@@ -1,0 +1,8 @@
+<art-resource-list title="Recently Added Customers"
+                   [table]="table"
+                   [dataSource]="dataSource"
+                   (edit)="edit()"
+                   (paginationChange)="onPaginationChange($event)"
+                   (rowSelection)="selectRow($event)"
+>
+</art-resource-list>
