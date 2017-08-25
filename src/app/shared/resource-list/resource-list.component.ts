@@ -20,6 +20,8 @@ export class ResourceListComponent<T> implements OnInit {
   @Output() delete: EventEmitter<T> = new EventEmitter<T>();
   @Output() addToReceipt: EventEmitter<T> = new EventEmitter<T>();
 
+  @Output() refresh: EventEmitter<any> = new EventEmitter();
+
   @Output() rowSelection: EventEmitter<T> = new EventEmitter<T>();
   @Output() paginationChange: EventEmitter<Page> = new EventEmitter<Page>();
 
@@ -40,6 +42,10 @@ export class ResourceListComponent<T> implements OnInit {
   onRowSelection(row: T) {
     this.selectedRow = row;
     this.rowSelection.emit(row);
+  }
+
+  onRefresh() {
+    this.refresh.emit();
   }
 
   onAddToReceipt() {

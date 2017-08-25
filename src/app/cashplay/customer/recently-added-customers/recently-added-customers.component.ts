@@ -55,6 +55,10 @@ export class RecentlyAddedCustomersComponent extends BaseCustomerComponent imple
     this.dataSource.getRecentlyAddedCustomers(page);
   }
 
+  refresh() {
+    this.dataSource.getRecentlyAddedCustomers(this.dataSource.page.getValue());
+  }
+
   edit() {
     this.editCustomer.emit(this.selectedResource);
   }

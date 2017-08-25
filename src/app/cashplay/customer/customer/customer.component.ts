@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 import { NewCustomerDialogComponent } from '../new-customer-dialog/new-customer-dialog.component';
 import { Customer } from '../customer';
 import { EditCustomerDialogComponent } from '../edit-customer-dialog/edit-customer-dialog.component';
+import { RecentlyAddedCustomersComponent } from '../recently-added-customers/recently-added-customers.component';
 
 @Component({
   selector: 'art-customer',
@@ -16,6 +17,9 @@ export class CustomerComponent implements OnInit, OnDestroy {
     width: '66%',
     disableClose: true
   };
+
+  @ViewChild(RecentlyAddedCustomersComponent)
+  private _recentlyAddedCustomerComponent;
 
   constructor(public newCustomerDialog: MdDialog, public editCustomerDialog: MdDialog) {
   }
@@ -51,6 +55,7 @@ export class CustomerComponent implements OnInit, OnDestroy {
 
   newCustomerAdded(customer: Customer) {
     this._newCustomerDialogRef.close();
+    this._recentlyAddedCustomerComponent.refresh();
     console.log('new customer added:');
     console.log(customer);
   }

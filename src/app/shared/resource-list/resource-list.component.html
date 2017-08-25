@@ -10,6 +10,8 @@
       <button md-button type="button" class="art-view" (click)="onView()" [disabled]="disabled()">View</button>
       <button md-button type="button" class="art-edit" (click)="onEdit()" [disabled]="disabled()">Edit</button>
       <button md-button type="button" class="art-delete" (click)="onDelete()" [disabled]="disabled()">Delete</button>
+      <span class="art-resource-list-toolbar-middle"></span>
+      <button md-button color="primary" (click)="onRefresh()"><i class="fa fa-refresh"></i></button>
     </div>
     <div>
       <art-table [table]="table" [dataSource]="dataSource" (rowSelected)="onRowSelection($event)"
