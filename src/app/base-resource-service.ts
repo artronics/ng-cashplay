@@ -13,7 +13,7 @@ export abstract class BaseResourceService {
   }
 
   search<T>(q: Query, page?: Page): Observable<IPaginatedResource<T[]>> {
-    return this.api.get<T>(this.resource, page, null, q);
+    return this.api.get<T>(this.resource + '/search', page, null, q);
   }
 
   recentlyAdded<T>(page: Page): Observable<IPaginatedResource<T[]>> {

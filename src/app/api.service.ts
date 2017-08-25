@@ -135,7 +135,7 @@ export class ApiService {
   }
 
   addQuery(url: string, q: Query): string {
-    return `${url}?q=${q}`;
+    return `${url}&q=${q}`;
   }
 
   addSort(url: string, sort: Sort): string {
