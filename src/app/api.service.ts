@@ -124,8 +124,7 @@ export class ApiService {
     }
 
     return this.http
-      .put(`${this.appConfig.baseUrl + url}/${body['id']}`, JSON.stringify(body), this.reqOpts)
-      .delay(1000)
+      .put(`${this.appConfig.baseUrl + url}/${body['id']}?userId=${this.account.loggedInUser.id}`, JSON.stringify(body), this.reqOpts)
       .map(response => response.json() as T)
       .catch(err => this.handleError(err));
   }

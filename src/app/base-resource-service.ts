@@ -5,6 +5,8 @@ export abstract class BaseResourceService {
   protected api: ApiService;
   protected abstract resource: string;
   protected abstract createResourceUrl: string;
+  protected abstract updateResourceUrl: string;
+
 
   constructor(api: ApiService) {
     this.api = api;
@@ -23,6 +25,6 @@ export abstract class BaseResourceService {
   }
 
   update<T>(customer: T): Observable<T> {
-    return this.api.put<T>(this.resource, customer);
+    return this.api.put<T>(this.updateResourceUrl, customer);
   }
 }

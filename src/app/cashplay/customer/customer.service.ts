@@ -6,9 +6,11 @@ import { BaseResourceService } from '../../base-resource-service';
 export class CustomerService extends BaseResourceService {
   protected resource = 'customers';
   protected createResourceUrl = '';
+  protected updateResourceUrl = '';
 
   constructor(protected api: ApiService) {
     super(api);
     this.createResourceUrl = `account/${this.api.account.id}/customers?userId=${this.api.account.loggedInUser.id}`;
+    this.updateResourceUrl = `account/${this.api.account.id}/customers`;
   }
 }

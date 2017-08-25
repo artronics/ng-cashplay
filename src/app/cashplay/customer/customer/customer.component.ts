@@ -56,13 +56,10 @@ export class CustomerComponent implements OnInit, OnDestroy {
   newCustomerAdded(customer: Customer) {
     this._newCustomerDialogRef.close();
     this._recentlyAddedCustomerComponent.refresh();
-    console.log('new customer added:');
-    console.log(customer);
   }
 
   customerEdited(customer: Customer) {
     this._editCustomerDialogRef.close();
-    console.log('customer edited:');
-    console.log(customer);
+    this._recentlyAddedCustomerComponent.refresh();
   }
 }
