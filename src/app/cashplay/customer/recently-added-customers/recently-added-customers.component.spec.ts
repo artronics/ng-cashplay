@@ -42,7 +42,7 @@ describe('RecentlyAddedCustomersComponent', () => {
 
   beforeEach(async(() => {
     const paginatedResource = new PaginatedResource({customers: customers});
-    paginatedResource.totalCount = 2;
+    paginatedResource.page.totalElements = 2;
     spyOn(customerServiceStub, 'recentlyAdded').and.callThrough().and.returnValue(
       Observable.of<IPaginatedResource<Customer[]>>(paginatedResource));
     TestBed.configureTestingModule({

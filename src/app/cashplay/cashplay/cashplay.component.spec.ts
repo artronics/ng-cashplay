@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CashplayComponent } from './cashplay.component';
-import { MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdMenuModule, MdToolbarModule } from '@angular/material';
 import { NavComponent } from '../nav/nav.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -14,7 +14,9 @@ describe('CashplayComponent', () => {
       declarations: [CashplayComponent, NavComponent],
       imports: [
         RouterTestingModule,
+        MdButtonModule,
         MdToolbarModule,
+        MdMenuModule,
       ]
     })
     .compileComponents();

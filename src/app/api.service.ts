@@ -9,6 +9,7 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/toPromise';
 import { MdSnackBar } from '@angular/material';
+import { Account } from './account';
 
 export type Query = string;
 
@@ -19,6 +20,11 @@ export interface Page {
   pageSize: number;
   /** The current total number of items being paged */
   length?: number;
+}
+
+export interface Sort {
+  propertyName: string;
+  direction: 'asc' | 'desc';
 }
 
 export interface IPaginatedResource<T> {
@@ -64,6 +70,7 @@ function instanceofUpdatedAt(object: any): object is UpdatedAt {
 @Injectable()
 export class ApiService {
   public token: string;
+  public account: Account;
 
   private reqOpts: RequestOptions = new RequestOptions();
 
@@ -72,19 +79,25 @@ export class ApiService {
               private http: Http,
   public snackBar: MdSnackBar) {
 
+    this.token = window.localStorage.getItem('token');
+    this.account = JSON.parse(window.localStorage.getItem('account')) as Account;
+
     const headers = new Headers();
     headers.append('Content-Type', 'Application/json');
-    this.token = window.localStorage.getItem('token');
-    headers.append('Authorization', <string>this.token);
+    headers.append('Authorization', this.token);
+
     this.reqOpts = new RequestOptions({headers: headers});
   }
 
-  get <T>(url: string, page?: Page, q?: Query): Observable<any> {
+  get<T>(url: string, page?: Page, sort?: Sort, q?: Query): Observable<any> {
     if (page) {
       url = this.addPagination(url, page);
     }
     if (q) {
       url = this.addQuery(url, q);
+    }
+    if (sort) {
+      url = this.addSort(url, sort);
     }
     return this.http
       .get(`${this.appConfig.baseUrl + url}`, this.reqOpts)
@@ -124,6 +137,10 @@ export class ApiService {
 
   addQuery(url: string, q: Query): string {
     return `${url}?q=${q}`;
+  }
+
+  addSort(url: string, sort: Sort): string {
+    return `${url}&sort=${sort.propertyName},${sort.direction}`;
   }
 
   addCreatedAt<T extends CreatedAt>(res: T): T {
