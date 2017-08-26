@@ -4,6 +4,7 @@ import { NewCustomerDialogComponent } from '../new-customer-dialog/new-customer-
 import { Customer } from '../customer';
 import { EditCustomerDialogComponent } from '../edit-customer-dialog/edit-customer-dialog.component';
 import { RecentlyAddedCustomersComponent } from '../recently-added-customers/recently-added-customers.component';
+import { CustomerSearchComponent } from '../customer-search/customer-search.component';
 
 @Component({
   selector: 'art-customer',
@@ -20,6 +21,8 @@ export class CustomerComponent implements OnInit, OnDestroy {
 
   @ViewChild(RecentlyAddedCustomersComponent)
   private _recentlyAddedCustomerComponent;
+  @ViewChild(CustomerSearchComponent)
+  private _customerSearchComponent;
 
   constructor(public newCustomerDialog: MdDialog, public editCustomerDialog: MdDialog) {
   }
@@ -56,10 +59,12 @@ export class CustomerComponent implements OnInit, OnDestroy {
   newCustomerAdded(customer: Customer) {
     this._newCustomerDialogRef.close();
     this._recentlyAddedCustomerComponent.refresh();
+    this._customerSearchComponent.refresh();
   }
 
   customerEdited(customer: Customer) {
     this._editCustomerDialogRef.close();
     this._recentlyAddedCustomerComponent.refresh();
+    this._customerSearchComponent.refresh();
   }
 }

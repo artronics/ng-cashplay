@@ -14,7 +14,10 @@
                      [table]="table" [title]="'Search Results:'"
                      [dataSource]="dataSource"
                      (paginationChange)="onPaginationChange($event)"
-                     (rowSelection)="selectedRow($event)"
+                     (rowSelection)="selectRow($event)"
+
+                     (refresh)="refresh()"
+                     (edit)="edit()"
   >
 
   </art-resource-list>

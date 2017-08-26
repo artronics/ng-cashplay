@@ -30,6 +30,7 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
   dataLength = 0;
 
   @Output() newCustomer: EventEmitter<any> = new EventEmitter();
+  @Output() editCustomer: EventEmitter<Customer> = new EventEmitter();
 
   q = '';
   searchTerm: Subject<string> = new Subject<string>();
@@ -97,6 +98,16 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
     this.searchTerm.next(q);
   }
 
+  edit() {
+    console.log(this.selectedResource);
+    this.editCustomer.emit(this.selectedResource);
+  }
+
+  refresh() {
+    if (this.q !== '') {
+      this.dataSource.search(this.q, this.dataSource.page.getValue());
+    }
+  }
 
   onPaginationChange(page: PageEvent) {
     super.onPaginationChange(page);

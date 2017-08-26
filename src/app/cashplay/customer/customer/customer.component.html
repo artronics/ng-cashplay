@@ -1,4 +1,6 @@
 <art-card class="art-customer" title="Customers">
-  <art-customer-search (newCustomer)="newCustomer()"></art-customer-search>
+  <art-customer-search (newCustomer)="newCustomer()"
+                       (editCustomer)="editCustomer($event)"
+  ></art-customer-search>
   <art-recently-added-customers (editCustomer)="editCustomer($event)"></art-recently-added-customers>
 </art-card>
