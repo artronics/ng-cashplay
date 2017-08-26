@@ -15,6 +15,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { IPaginatedResource, PaginatedResource } from '../../../api.service';
 import { CustomerData } from '../base-customer-data-source';
+import { PageEvent } from '@angular/material';
 
 
 @Component({
@@ -63,7 +64,7 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
       .debounceTime(300)
       .distinctUntilChanged()
       .switchMap(term => term
-        ? this.customerService.search(term, p)
+        ? this.dataSource.search(term, p)
         : Observable.of<IPaginatedResource<Customer[]>>(new PaginatedResource({customers: []}))
       )
       .catch(err => {
@@ -72,6 +73,7 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
       });
 
     this.foundCustomers.subscribe(c => {
+      console.log('kir');
       this.dataSource.searchedCustomers.next(c._embedded['customers']);
       if (c.page.totalElements) {
         this.dataSource.changePageLength(c.page.totalElements);
@@ -93,5 +95,11 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
 
   search(q) {
     this.searchTerm.next(q);
+  }
+
+
+  onPaginationChange(page: PageEvent) {
+    super.onPaginationChange(page);
+    this.dataSource.search(this.q, page);
   }
 }

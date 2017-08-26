@@ -3,11 +3,13 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { CustomerService } from '../customer.service';
 import { MdPaginator, MdSort } from '@angular/material';
 import { Customer } from '../customer';
+import { Page } from '../../../api.service';
+import 'rxjs/add/observable/of';
 
 export class CustomerSearchDataSource extends BaseCustomerDataSource {
   searchedCustomers: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 
-  constructor(customerService: CustomerService, sort: MdSort, paginator: MdPaginator, appConfig) {
+  constructor(private customerService: CustomerService, sort: MdSort, paginator: MdPaginator, appConfig) {
     super(sort, paginator);
 
     this.displayDataChanges.push(this.searchedCustomers);
@@ -17,5 +19,22 @@ export class CustomerSearchDataSource extends BaseCustomerDataSource {
 
   get data(): CustomerData[] {
     return this.searchedCustomers.value;
+  }
+
+  search(term: string, page: Page) {
+    const foundCustomer = this.customerService.search<Customer>(term, page);
+
+    foundCustomer.subscribe((paginatedCustomers) => {
+      page.length = paginatedCustomers.page.totalElements;
+      this.page.next(page);
+
+      const copiedData = [];
+      for (const customer of <Customer[]>paginatedCustomers._embedded['customers']) {
+        copiedData.push(customer);
+        this.searchedCustomers.next(copiedData);
+      }
+    });
+
+    return foundCustomer;
   }
 }
