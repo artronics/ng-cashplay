@@ -29,7 +29,8 @@ export class CustomerSearchDataSource extends BaseCustomerDataSource {
       this.page.next(page);
 
       const copiedData = [];
-      for (const customer of <Customer[]>paginatedCustomers._embedded['customers']) {
+      const customers = paginatedCustomers._embedded ? paginatedCustomers._embedded['customers'] : [];
+      for (const customer of customers) {
         copiedData.push(customer);
         this.searchedCustomers.next(copiedData);
       }

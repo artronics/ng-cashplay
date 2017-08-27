@@ -1,0 +1,8 @@
+@import "../../../../variables";
+
+.art-no-results {
+  display: flex;
+  justify-content: center;
+  color: $info-text-color;
+  font-size: large;
+}

@@ -10,6 +10,9 @@
   <a md-raised-button  color="primary" card-action (click)="onNewCustomer()">
     <md-icon class="fa fa-plus"></md-icon> New Customer</a>
 
+  <div *ngIf="noResults" class="art-no-results">
+    <p><i class="fa fa-exclamation-circle"></i> No results found for <strong>{{q}}</strong></p>
+  </div>
   <art-resource-list [ngClass]="{'hide': dataLength == 0}"
                      [table]="table" [title]="'Search Results:'"
                      [dataSource]="dataSource"

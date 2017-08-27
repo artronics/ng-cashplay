@@ -35,6 +35,7 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
   q = '';
   searchTerm: Subject<string> = new Subject<string>();
   foundCustomers: Observable<IPaginatedResource<CustomerData[]>>;
+  noResults = false;
 
 
   protected connectDataSource() {
@@ -73,9 +74,11 @@ export class CustomerSearchComponent extends BaseCustomerComponent implements On
         return Observable.of<IPaginatedResource<Customer[]>>(new PaginatedResource({customers: []}));
       });
 
+    this.dataSource.searchedCustomers.subscribe(c => this.noResults = c.length === 0  && this.q !== '');
+
     this.foundCustomers.subscribe(c => {
-      console.log('kir');
-      this.dataSource.searchedCustomers.next(c._embedded['customers']);
+      const customers = c._embedded ? c._embedded['customers'] : [];
+      this.dataSource.searchedCustomers.next(customers);
       if (c.page.totalElements) {
         this.dataSource.changePageLength(c.page.totalElements);
         this.dataLength = c.page.totalElements;
