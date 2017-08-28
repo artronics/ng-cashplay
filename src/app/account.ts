@@ -10,6 +10,6 @@ export interface AccountData extends BaseResourceData {
 export class Account extends BaseResource implements AccountData {
   name = '';
   users = [];
-  loggedInUser = null;
+  loggedInUser = new User();
 }
 

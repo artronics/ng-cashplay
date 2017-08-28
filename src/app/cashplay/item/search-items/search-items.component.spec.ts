@@ -10,12 +10,18 @@ import { FormsModule } from '@angular/forms';
 import { TestResource } from '../../../test-helper';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Observable/of';
-import { IPaginatedResource } from '../../../api.service';
+import { ApiService, IPaginatedResource } from '../../../api.service';
+import { Account } from '../../../account';
 
 describe('SearchItemsComponent', () => {
   let component: SearchItemsComponent;
   let fixture: ComponentFixture<SearchItemsComponent>;
-  let itemServiceStub: ItemService = new ItemService(null);
+
+  const apiServiceStub: ApiService = new ApiService(null, null, null);
+  apiServiceStub.account = new Account();// {id: 1, name: 'foo', users: [], loggedInUser: new User()};
+
+  let itemServiceStub: ItemService = new ItemService(apiServiceStub);
+
   const items: TestResource[] = [
     {id: 1, name: 'foo'},
     {id: 2, name: 'bar'}

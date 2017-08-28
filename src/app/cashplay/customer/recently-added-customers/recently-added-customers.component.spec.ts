@@ -29,12 +29,14 @@ describe('RecentlyAddedCustomersComponent', () => {
       id: 1,
       firstName: 'John',
       lastName: 'Doe',
+      image: 'some binary pic',
       createdAt: new Date(Date.now()),
       updatedAt: null
     }, {
       id: 2,
       firstName: 'Jalal',
       lastName: 'Hosseini',
+      image: 'some binary pic',
       createdAt: new Date(Date.now()),
       updatedAt: null
     }
