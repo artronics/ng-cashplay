@@ -13,15 +13,11 @@ export class WebcamComponent implements OnInit, OnDestroy {
     dest_width: number;
     dest_height: number;
   } = {width: 320, height: 240, dest_height: 480, dest_width: 640};
+  @Input() dataUri: string;
 
   @Output() image: EventEmitter<string> = new EventEmitter();
-  video = <any>document.getElementsByTagName('video')[0];
-  canvas = <any>document.getElementsByTagName('canvas')[0];
 
-  success = (stream: MediaStream) => {
-  };
-  onError = (err) => {
-  };
+  isCameraOn = false;
 
   constructor() {
   }
@@ -34,7 +30,6 @@ export class WebcamComponent implements OnInit, OnDestroy {
     options.jpeg_quality = 90;
     Webcam.set(options);
 
-    Webcam.attach('my_camera');
   }
 
   ngOnDestroy() {
@@ -42,11 +37,19 @@ export class WebcamComponent implements OnInit, OnDestroy {
   }
 
   shot() {
-    Webcam.unfreeze();
-    Webcam.snap(dataUri => {
-      this.image.emit(dataUri);
-    });
-    Webcam.freeze();
+    if (this.isCameraOn) {
+      Webcam.snap(dataUri => {
+        this.image.emit(dataUri);
+        this.dataUri = dataUri;
+        Webcam.reset();
+        this.isCameraOn = false;
+      });
+
+      return;
+    } else {
+      Webcam.attach('my_camera');
+      this.isCameraOn = true;
+    }
   }
 
 }

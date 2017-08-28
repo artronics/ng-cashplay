@@ -1,0 +1,23 @@
+.art-webcam-screen {
+  img {
+    position: relative;
+  }
+  border: 1px solid black;
+}
+
+.art-webcam-actions {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+}
+
+#my_camera {
+  z-index: 1;
+  overflow: hidden;
+}
+.art-webcam-help {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}

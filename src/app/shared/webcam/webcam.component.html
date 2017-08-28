@@ -1,4 +1,21 @@
-<p>webcam</p>
-<div id="my_camera" [style.width]="options.width + 'px'" [style.height]="options.height+ 'px'"></div>
-<div id="my_result"></div>
-<button md-icon-button (click)="shot()"><i class="fa fa-camera"></i></button>
+<div class="art-webcam-screen" [style.width]="options.width + 'px'" [style.height]="options.height+'px'">
+  <div id="my_camera" [style.width]="options.width + 'px'" [style.height]="options.height+ 'px'">
+  </div>
+  <img *ngIf="dataUri && !isCameraOn" [src]="dataUri" alt=""
+       [style.width]="options.width + 'px'"
+       [style.height]="options.height+ 'px'"
+       [style.top]="-options.height + 'px'"
+  >
+  <div *ngIf="!dataUri && !isCameraOn" class="art-webcam-help"
+       [style.width]="options.width + 'px'"
+       [style.height]="options.height+ 'px'"
+       [style.top]="-options.height + 'px'"
+  >
+    <p>press flean</p>
+  </div>
+  <div class="art-webcam-actions" [style.top]="isCameraOn? '-50px' : -options.height-50 + 'px'">
+    <button md-icon-button (click)="shot()"><i class="fa fa-3x fa-camera"></i></button>
+  </div>
+</div>
+
+
