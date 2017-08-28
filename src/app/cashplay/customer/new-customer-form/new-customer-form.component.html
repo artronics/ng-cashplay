@@ -1,4 +1,5 @@
-<form #newCustomerForm="ngForm" (ngSubmit)="onSubmit()">
+<form #newCustomerForm="ngForm">
+  <art-webcam (image)="image($event)"></art-webcam>
   <md-input-container>
     <input mdInput placeholder="First Name" required name="firstName"
       [(ngModel)]="customer.firstName" #firstName="ngModel">

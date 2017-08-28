@@ -4,6 +4,7 @@ import { BaseResource } from '../../base-resource';
 export class Customer extends BaseResource implements CustomerData {
   firstName = '';
   lastName = '';
+  image = '';
 
   static Sort(a: Customer, b: Customer, property: string, direction?): number {
     const result = BaseResource.Sort(a, b, property, direction);

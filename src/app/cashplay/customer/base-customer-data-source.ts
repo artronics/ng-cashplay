@@ -7,6 +7,7 @@ import { Customer } from './customer';
 export interface CustomerData extends BaseResourceData {
   firstName: string;
   lastName: string;
+  image: string;
 }
 
 export abstract class BaseCustomerDataSource extends BaseDataSource<Customer> implements DataSource<Customer> {

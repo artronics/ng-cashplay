@@ -24,6 +24,11 @@ export class NewCustomerFormComponent implements OnInit {
     }
   }
   valid() {
-    return this.form.form.valid;
+    return this.form.form.valid && this.customer.image !== '';
+  }
+
+  image(dataUri: string) {
+    dataUri = dataUri.replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+    this.customer.image = dataUri;
   }
 }

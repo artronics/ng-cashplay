@@ -14,6 +14,7 @@ import { CdkTableModule } from '@angular/cdk';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { ErrorBoxComponent } from './error-box/error-box.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { WebcamComponent as MyWebcamComponent } from './webcam/webcam.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ResourceListComponent,
     ErrorBoxComponent,
     DialogComponent,
+    MyWebcamComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,6 +40,7 @@ import { DialogComponent } from './dialog/dialog.component';
     TableComponent,
     ResourceListComponent,
     DialogComponent,
-  ]
+    MyWebcamComponent,
+  ],
 })
 export class SharedModule {}
